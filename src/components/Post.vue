@@ -1,12 +1,20 @@
 <template>
   <div class="post row">
-    <div class="col m-5">
+    <div class="col m-3">
       <h4>{{ post.creator.name }}</h4>
       <img :src="post.creator.picture" style="width: 150px" alt="" />
     </div>
-    <div class="row">
-      <div class="col m-5">
+    <div class="row d-flex align-items-center">
+      <div class="col-1">
+        <button class="btn btn-primary m-5">
+          {{ post.likes.length }} <i class="mdi mdi-thumb-up"></i>
+        </button>
+      </div>
+      <div class="col-6 m-5">
         {{ post.body }}
+      </div>
+      <div class="col-2 m-5">
+        {{ post.createdAt }}
       </div>
     </div>
   </div>

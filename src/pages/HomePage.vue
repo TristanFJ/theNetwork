@@ -7,7 +7,7 @@
       <div
         v-for="p in posts"
         :key="p.id"
-        class="col-md-12 card selectable elevation-3 mt-5"
+        class="col-md-12 card elevation-3 mt-5"
       >
         <Post :post="p" />
       </div>
