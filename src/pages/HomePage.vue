@@ -1,5 +1,8 @@
 <template>
   <div class="align-items-center justify-content-center">
+    <div class="col mt-2">
+      <Search />
+    </div>
     <div class="p-5 m-5 bg-white rounded elevation-3">
       <div
         v-for="p in posts"
