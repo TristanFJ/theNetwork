@@ -1,6 +1,6 @@
 <template>
   <div class="post row">
-    <div class="col m-3">
+    <div @click="routeTo" class="col m-3 selectable">
       <h4>{{ post.creator.name }}</h4>
       <img :src="post.creator.picture" style="width: 150px" alt="" />
     </div>
@@ -24,11 +24,21 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
+import { logger } from "../utils/Logger";
+import { useRouter } from "vue-router";
 export default {
   props: { post: { type: Object, required: true } },
-  setup() {
+  setup(props) {
+    const router = useRouter();
     return {
       posts: computed(() => AppState.posts),
+      routeTo() {
+        logger.log("routeTo", props.post.creatorId);
+        router.push({
+          name: "Profile",
+          params: { id: props.post.creatorId },
+        });
+      },
     };
   },
 };
