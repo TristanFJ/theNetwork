@@ -3,7 +3,9 @@
     <div class="col mt-2">
       <Search />
     </div>
+
     <div class="p-5 m-5 bg-white rounded elevation-3">
+      <CreatePost v-if="account.id" />
       <div
         v-for="p in posts"
         :key="p.id"
@@ -32,7 +34,10 @@ export default {
         Pop.toast(error.message, "error");
       }
     });
-    return { posts: computed(() => AppState.posts) };
+    return {
+      posts: computed(() => AppState.posts),
+      account: computed(() => AppState.account),
+    };
   },
 };
 </script>

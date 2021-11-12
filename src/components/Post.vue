@@ -1,19 +1,19 @@
 <template>
   <div class="post row">
-    <div @click="routeTo" class="col m-3 selectable">
-      <h4>{{ post.creator.name }}</h4>
+    <div @click="routeTo" class="col-3 m-3 selectable">
+      <h5>{{ post.creator.name }}</h5>
       <img :src="post.creator.picture" style="width: 150px" alt="" />
     </div>
     <div class="row d-flex align-items-center">
-      <div class="col-1">
+      <div class="col-md-2">
         <button class="btn btn-primary m-5">
           {{ post.likes.length }} <i class="mdi mdi-thumb-up"></i>
         </button>
       </div>
-      <div class="col-6 m-5">
+      <div class="col-md-6 m-5">
         {{ post.body }}
       </div>
-      <div class="col-2 m-5">
+      <div class="col-md-2 m-5">
         {{ post.createdAt }}
       </div>
     </div>
