@@ -1,23 +1,23 @@
 <template>
-  <div
-    class="
-      home
-      flex-grow-1
-      d-flex
-      flex-column
-      align-items-center
-      justify-content-center
-    "
-  >
-    <div class="home-card p-5 bg-white rounded elevation-3"></div>
+  <div class="align-items-center justify-content-center">
+    <div class="p-5 m-5 bg-white rounded elevation-3">
+      <div
+        v-for="p in posts"
+        :key="p.id"
+        class="col-md-12 card selectable elevation-3 mt-5"
+      >
+        <Post :post="p" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from "@vue/runtime-core";
+import { computed, onMounted } from "@vue/runtime-core";
 import Pop from "../utils/Pop";
 import { logger } from "../utils/Logger";
 import { postService } from "../services/PostService";
+import { AppState } from "../AppState";
 export default {
   name: "Home",
   setup() {
@@ -29,7 +29,7 @@ export default {
         Pop.toast(error.message, "error");
       }
     });
-    return {};
+    return { posts: computed(() => AppState.posts) };
   },
 };
 </script>
