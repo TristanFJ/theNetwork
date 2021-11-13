@@ -4,7 +4,7 @@
       <button
         class="btn btn-outline-primary"
         @click.prevent="createPost"
-        type="button"
+        type="submit"
         id="button-addon1"
       >
         Create Post:
