@@ -6,8 +6,13 @@
     </div>
     <div class="row d-flex align-items-center">
       <div class="col-md-2">
-        <button class="btn btn-primary m-5">
+        <button @click="like(post.id)" class="btn btn-primary m-5">
           {{ post.likes.length }} <i class="mdi mdi-thumb-up"></i>
+        </button>
+      </div>
+      <div v-if="post.creator.id === account.id" class="col-md-2">
+        <button @click="remove(post.id)" class="btn btn-danger m-5">
+          Delete <i class="mdi mdi-trash-can"></i>
         </button>
       </div>
       <div class="col-md-6 m-5">
@@ -26,18 +31,40 @@ import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
 import { logger } from "../utils/Logger";
 import { useRouter } from "vue-router";
+import Pop from "../utils/Pop";
+import { postService } from "../services/PostService";
 export default {
   props: { post: { type: Object, required: true } },
+
   setup(props) {
     const router = useRouter();
     return {
       posts: computed(() => AppState.posts),
+      account: computed(() => AppState.account),
+
       routeTo() {
-        logger.log("routeTo", props.post.creatorId);
         router.push({
           name: "Profile",
           params: { id: props.post.creatorId },
         });
+      },
+
+      async like(id) {
+        try {
+          postService.like(id);
+        } catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
+        }
+      },
+
+      async remove(id) {
+        try {
+          postService.remove(id);
+        } catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
+        }
       },
     };
   },

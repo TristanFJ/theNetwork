@@ -13,6 +13,11 @@
       >
         <Post :post="p" />
       </div>
+      <div class="m-3" v-if="page">{{ page }}</div>
+
+      <button @click="nextPage" v-if="nextPage" class="btn btn-primary">
+        Next Page
+      </button>
     </div>
   </div>
 </template>
@@ -23,6 +28,7 @@ import Pop from "../utils/Pop";
 import { logger } from "../utils/Logger";
 import { postService } from "../services/PostService";
 import { AppState } from "../AppState";
+import { useRouter } from "vue-router";
 export default {
   name: "Home",
   setup() {
@@ -37,6 +43,18 @@ export default {
     return {
       posts: computed(() => AppState.posts),
       account: computed(() => AppState.account),
+      page: computed(() => AppState.page),
+      prevPage: computed(() => AppState.prevPage),
+      nextPage: computed(() => AppState.nextPage),
+
+      // async getPage(page) {
+      //   try {
+      //     await postService.getAll(query.value, page);
+      //   } catch (error) {
+      //     logger.error(error);
+      //     Pop.toast(error.message, "error");
+      //   }
+      // },
     };
   },
 };

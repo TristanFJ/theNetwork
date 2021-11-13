@@ -5,5 +5,10 @@ export const AppState = reactive({
   user: {},
   account: {},
   profile: {},
-  posts: {}
+  posts: {},
+  prevPage: null,
+  nextPage: null,
+  page: ''
 })
+
+// TODO likes in appstate to update on new likes?
