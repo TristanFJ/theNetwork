@@ -1,10 +1,10 @@
 <template>
   <div class="align-items-center justify-content-center">
-    <div class="col mt-2">
+    <div class="col m-0">
       <Search />
     </div>
 
-    <div class="p-0 m-3 rounded elevation-3">
+    <div class="p-0 m-3">
       <CreatePost v-if="account.id" />
       <div
         v-for="p in posts"

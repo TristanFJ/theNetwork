@@ -59,7 +59,8 @@ export default {
 
       async like(id) {
         try {
-          postService.like(id);
+          await postService.like(id);
+          await postService.getAll();
         } catch (error) {
           logger.error(error);
           Pop.toast(error.message, "error");

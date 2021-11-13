@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="createPost" class="input-group">
-    <div class="input-group mb-3">
+    <div class="input-group">
       <button
         class="btn btn-outline-primary"
         @click.prevent="createPost"
