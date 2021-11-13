@@ -1,14 +1,23 @@
 <template>
-  <form @submit.prevent="createPost">
-    <label for="" class="form-label">
-      <button class="btn btn-primary">Create Post:</button></label
-    >
-    <input
-      v-model="state.editable.body"
-      type="text"
-      required
-      class="form-control"
-    />
+  <form @submit.prevent="createPost" class="input-group">
+    <div class="input-group mb-3">
+      <button
+        class="btn btn-outline-primary"
+        @click.prevent="createPost"
+        type="button"
+        id="button-addon1"
+      >
+        Create Post:
+      </button>
+      <input
+        v-model="state.editable.body"
+        type="text"
+        class="form-control"
+        placeholder=". . ."
+        aria-label="Example text with button addon"
+        aria-describedby="button-addon1"
+      />
+    </div>
   </form>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="search row px-5">
+  <div class="search row my-5 px-5">
     <div class="col">
       <form @submit.prevent="searchPosts" class="input-group">
         <input

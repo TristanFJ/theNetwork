@@ -1,26 +1,32 @@
 <template>
-  <div class="post row">
-    <div @click="routeTo" class="col-3 m-3 selectable">
+  <div class="post row d-flex align-items-center m-1 px-3">
+    <div @click="routeTo" class="col-md-2 mx-3 selectable">
       <h5>{{ post.creator.name }}</h5>
       <img :src="post.creator.picture" style="width: 150px" alt="" />
     </div>
-    <div class="row d-flex align-items-center">
-      <div class="col-md-2">
-        <button @click="like(post.id)" class="btn btn-primary m-5">
-          {{ post.likes.length }} <i class="mdi mdi-thumb-up"></i>
-        </button>
-      </div>
-      <div v-if="post.creator.id === account.id" class="col-md-2">
-        <button @click="remove(post.id)" class="btn btn-danger m-5">
-          Delete <i class="mdi mdi-trash-can"></i>
-        </button>
-      </div>
-      <div class="col-md-6 m-5">
+
+    <div class="col-md-6 text-start px-5 mx-5">
+      <samp class="h4 p-5">
         {{ post.body }}
-      </div>
-      <div class="col-md-2 m-5">
-        {{ post.createdAt }}
-      </div>
+      </samp>
+
+      <img :src="post.imgUrl" style="width: 150px" alt="" />
+    </div>
+  </div>
+  <!-- LIKE AND DELETE BUTTONS -->
+  <div class="row d-flex align-items-center m-1 px-1">
+    <div class="col-md-1">
+      <button @click="like(post.id)" class="btn btn-sm btn-primary mx-3">
+        {{ post.likes.length }} <i class="mdi mdi-thumb-up"></i>
+      </button>
+    </div>
+    <div v-if="post.creator.id === account.id" class="col-md-1">
+      <button @click="remove(post.id)" class="btn btn-sm btn-danger m-1">
+        Delete <i class="mdi mdi-trash-can"></i>
+      </button>
+    </div>
+    <div class="col-md-6 m-1">
+      <small> {{ post.createdAt }} </small>
     </div>
   </div>
 </template>

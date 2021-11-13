@@ -1,8 +1,17 @@
 <template>
   <div class="profile container-fluid text-center">
     <div class="row">
-      <div class="col-4 bg-primary elevation-2 ms-2">
-        <h1>{{ profile.name }}</h1>
+      <ProfileDetails />
+      <ProfileModal />
+      <div class="col mt-2">
+        <Search />
+      </div>
+      <div
+        v-for="p in posts"
+        :key="p.id"
+        class="col-md-12 card elevation-3 mt-1"
+      >
+        <Post :post="p" />
       </div>
     </div>
   </div>
@@ -33,7 +42,11 @@ export default {
       }
     });
     return {
+      posts: computed(() => AppState.posts),
       account: computed(() => AppState.account),
+      page: computed(() => AppState.page),
+      prevPage: computed(() => AppState.prevPage),
+      nextPage: computed(() => AppState.nextPage),
       profile: computed(() => AppState.profile),
     };
   },

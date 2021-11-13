@@ -47,14 +47,14 @@ export default {
       prevPage: computed(() => AppState.prevPage),
       nextPage: computed(() => AppState.nextPage),
 
-      // async getPage(page) {
-      //   try {
-      //     await postService.getAll(query.value, page);
-      //   } catch (error) {
-      //     logger.error(error);
-      //     Pop.toast(error.message, "error");
-      //   }
-      // },
+      async getPage(page) {
+        try {
+          await postService.getAll();
+        } catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
+        }
+      },
     };
   },
 };

@@ -17,14 +17,16 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
+      <ul @click="routeTo" class="navbar-nav me-auto">
         <li>
-          <router-link
+          <!-- <router-link
             :to="{ name: 'Account' }"
             class="btn text-success lighten-30 selectable text-uppercase"
           >
             Profile
-          </router-link>
+          </router-link> -->
+
+          <button class="btn btn-primary">Profile</button>
         </li>
       </ul>
       <span class="navbar-text">
@@ -89,10 +91,21 @@
 import { AuthService } from "../services/AuthService";
 import { AppState } from "../AppState";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 export default {
   setup() {
+    const router = useRouter();
     return {
       user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
+
+      routeTo() {
+        router.push({
+          name: "Profile",
+          params: { id: AppState.account.id },
+        });
+      },
+
       async login() {
         AuthService.loginWithPopup();
       },

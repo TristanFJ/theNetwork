@@ -1,7 +1,7 @@
 <template>
   <main class="home container-fluid">
     <div class="row">
-      <div class="col w-100 p-0">
+      <div class="col p-0">
         <Navbar />
       </div>
       <div class="col-10">
