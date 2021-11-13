@@ -6,10 +6,26 @@
         <img :src="profile.picture" style="height: 100px" alt="" />
         {{ profile.name }}
       </h1>
-      {{ profile.bio || "Bio goes here." }}
-      {{ profile.class || "Class goes here." }}
-      {{ profile.github || "GitHub goes here." }}
-      {{ profile.resume || "Resume goes here." }}
+      <h5>Biography:</h5>
+      <p>{{ profile.bio || "Bio goes here." }}</p>
+
+      <h5>Class:</h5>
+      <p>{{ profile.class || "Class goes here." }}</p>
+
+      <h5>GitHub:</h5>
+      <a :href="profile.github">{{ profile.github || "GitHub goes here" }}</a>
+
+      <h5>linkedin:</h5>
+      <a :href="profile.linkedin">{{
+        profile.linkedin || "linkedin goes here"
+      }}</a>
+
+      <h5>Resume:</h5>
+      <p>{{ profile.resume || "Resume goes here." }}</p>
+
+      <h5 v-if="profile.graduated">
+        Graduated <i class="mdi mdi-account-check"></i>
+      </h5>
     </div>
   </div>
 </template>

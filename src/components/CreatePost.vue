@@ -17,6 +17,14 @@
         aria-label="Example text with button addon"
         aria-describedby="button-addon1"
       />
+      <input
+        v-model="state.editable.imgUrl"
+        type="url"
+        class="form-control"
+        placeholder="image link"
+        aria-label="Example text with button addon"
+        aria-describedby="button-addon1"
+      />
     </div>
   </form>
 </template>

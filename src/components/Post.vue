@@ -1,6 +1,6 @@
 <template>
-  <div class="post row d-flex align-items-center m-1 px-3">
-    <div @click="routeTo" class="col-md-2 mx-3 selectable">
+  <div class="post row d-flex align-items-center m-1">
+    <div @click="routeTo" class="col-md-2 mx-3 selectable p-3">
       <h5>{{ post.creator.name }}</h5>
       <img :src="post.creator.picture" style="width: 150px" alt="" />
     </div>
@@ -14,18 +14,20 @@
     </div>
   </div>
   <!-- LIKE AND DELETE BUTTONS -->
-  <div class="row d-flex align-items-center m-1 px-1">
-    <div class="col-md-1">
+  <div class="row d-flex align-items-center justify-content-between m-1 px-1">
+    <div class="col-md-3">
       <button @click="like(post.id)" class="btn btn-sm btn-primary mx-3">
         {{ post.likes.length }} <i class="mdi mdi-thumb-up"></i>
       </button>
-    </div>
-    <div v-if="post.creator.id === account.id" class="col-md-1">
-      <button @click="remove(post.id)" class="btn btn-sm btn-danger m-1">
+      <button
+        v-if="post.creator.id === account.id"
+        @click="remove(post.id)"
+        class="btn btn-sm btn-danger m-1"
+      >
         Delete <i class="mdi mdi-trash-can"></i>
       </button>
     </div>
-    <div class="col-md-6 m-1">
+    <div class="col-md-4 m-1">
       <small> {{ post.createdAt }} </small>
     </div>
   </div>

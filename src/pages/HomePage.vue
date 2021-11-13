@@ -4,7 +4,7 @@
       <Search />
     </div>
 
-    <div class="p-5 m-5 bg-white rounded elevation-3">
+    <div class="p-0 m-3 rounded elevation-3">
       <CreatePost v-if="account.id" />
       <div
         v-for="p in posts"
@@ -27,6 +27,7 @@ import { computed, onMounted } from "@vue/runtime-core";
 import Pop from "../utils/Pop";
 import { logger } from "../utils/Logger";
 import { postService } from "../services/PostService";
+import { picturesService } from "../services/PicturesService";
 import { AppState } from "../AppState";
 import { useRouter } from "vue-router";
 export default {
@@ -35,6 +36,7 @@ export default {
     onMounted(async () => {
       try {
         await postService.getAll();
+        await picturesService.getAll();
       } catch (error) {
         logger.log(error);
         Pop.toast(error.message, "error");
