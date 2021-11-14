@@ -15,7 +15,11 @@
       </div>
       <div class="m-3" v-if="page">{{ page }}</div>
 
-      <button @click="nextPage" v-if="nextPage" class="btn btn-primary">
+      <button @click="prev" v-if="prevPage" class="btn mx-1 btn-primary">
+        Previous Page
+      </button>
+
+      <button @click="next" v-if="nextPage" class="btn mx-1 btn-primary">
         Next Page
       </button>
     </div>
@@ -23,7 +27,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from "@vue/runtime-core";
+import { computed, onMounted, ref } from "@vue/runtime-core";
 import Pop from "../utils/Pop";
 import { logger } from "../utils/Logger";
 import { postService } from "../services/PostService";
@@ -49,9 +53,18 @@ export default {
       prevPage: computed(() => AppState.prevPage),
       nextPage: computed(() => AppState.nextPage),
 
-      async getPage(page) {
+      async next() {
         try {
-          await postService.getAll();
+          await postService.getAll(this.nextPage);
+        } catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
+        }
+      },
+
+      async prev() {
+        try {
+          await postService.getAll(this.prevPage);
         } catch (error) {
           logger.error(error);
           Pop.toast(error.message, "error");

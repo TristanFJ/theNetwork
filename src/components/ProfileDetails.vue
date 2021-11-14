@@ -26,6 +26,7 @@
       <h5 v-if="profile.graduated">
         Graduated <i class="mdi mdi-account-check"></i>
       </h5>
+      <div class="m-2 p-2"><ProfileModal /></div>
     </div>
   </div>
 </template>

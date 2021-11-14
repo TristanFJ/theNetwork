@@ -4,15 +4,15 @@ import { AppState } from "../AppState"
 import { Post } from "../models/Post"
 import Pop from "../utils/Pop"
 class PostService {
-  async getAll(query = '', fullUrl = 'api/posts/') {
+  async getAll(fullUrl = 'api/posts/', query = '') {
 
     const res = await api.get(fullUrl + query)
-    // logger.log('get posts', res.data)
+    logger.log('get posts', res.data)
     AppState.posts = res.data.posts.map(p => new Post(p))
     AppState.page = res.data.page
     AppState.prevPage = res.data.newer
     AppState.nextPage = res.data.older
-    // logger.log(AppState.newer, AppState.older)
+    logger.log('Check AppState ', AppState.prevPage, AppState.nextPage)
   }
 
 

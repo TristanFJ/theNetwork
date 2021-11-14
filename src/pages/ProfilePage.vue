@@ -2,16 +2,27 @@
   <div class="profile container-fluid text-center">
     <div class="row">
       <ProfileDetails />
-      <ProfileModal />
       <div class="col mt-2">
         <Search />
       </div>
-      <div
-        v-for="p in posts"
-        :key="p.id"
-        class="col-md-12 card elevation-3 mt-1"
-      >
-        <Post :post="p" />
+      <div class="p-0 m-3">
+        <CreatePost v-if="account.id" />
+        <div
+          v-for="p in posts"
+          :key="p.id"
+          class="col-md-12 card elevation-3 mt-5"
+        >
+          <Post :post="p" />
+        </div>
+        <div class="m-3" v-if="page">{{ page }}</div>
+
+        <button @click="prev" v-if="prevPage" class="btn mx-1 btn-primary">
+          Previous Page
+        </button>
+
+        <button @click="next" v-if="nextPage" class="btn mx-1 btn-primary">
+          Next Page
+        </button>
       </div>
     </div>
   </div>
@@ -34,7 +45,10 @@ export default {
       try {
         if (route.name == "Profile") {
           await profilesService.getProfile(route.params.id);
-          await postService.getAll("?creatorId=" + route.params.id);
+          await postService.getAll(
+            "api/posts",
+            "?creatorId=" + route.params.id
+          );
         }
       } catch (error) {
         logger.error(error);
@@ -48,6 +62,24 @@ export default {
       prevPage: computed(() => AppState.prevPage),
       nextPage: computed(() => AppState.nextPage),
       profile: computed(() => AppState.profile),
+
+      async next() {
+        try {
+          await postService.getAll(this.nextPage);
+        } catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
+        }
+      },
+
+      async prev() {
+        try {
+          await postService.getAll(this.prevPage);
+        } catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
+        }
+      },
     };
   },
 };

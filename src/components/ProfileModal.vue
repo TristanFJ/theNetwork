@@ -6,7 +6,7 @@
         v-if="profile.id === account.id"
         @click.prevent="editProfile"
         type="button"
-        class="btn btn-primary btn-lg"
+        class="btn btn-primary btn-lg rounded elevation-5"
         data-bs-toggle="modal"
         data-bs-target="#modelId"
       >
@@ -81,12 +81,18 @@
                 placeholder="linkedin"
               />
 
-              <input
-                v-model="editable.graduated"
-                type="text"
-                class="form-control"
-                placeholder="graduated"
-              />
+              <div class="form-check">
+                <input
+                  v-model="editable.graduated"
+                  class="form-check-input"
+                  type="checkbox"
+                  id="flexCheckChecked"
+                  checked
+                />
+                <label class="form-check-label" for="flexCheckChecked">
+                  Graduated
+                </label>
+              </div>
             </div>
             <div class="modal-footer">
               <button
@@ -140,5 +146,10 @@ export default {
 <style lang="scss" scoped>
 input {
   margin: 3px;
+}
+
+.form-check {
+  width: 120px;
+  margin: 5%;
 }
 </style>
