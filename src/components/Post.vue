@@ -13,7 +13,7 @@
   </div>
   <div class="row d-flex align-items-center justify-content-between m-1 px-1">
     <div class="col-md-3">
-      <button @click="like(post.id)" class="btn btn-sm btn-primary mx-3">
+      <button @click="like(post.id)" class="btn btn-sm btn-primary mx-1">
         {{ post.likes.length }} <i class="mdi mdi-thumb-up"></i>
       </button>
       <button
@@ -24,7 +24,7 @@
         Delete <i class="mdi mdi-trash-can"></i>
       </button>
     </div>
-    <div class="col-md-4 m-1">
+    <div class="col-md-5 m-1">
       <small> {{ new Date(post.createdAt) }} </small>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="pictures p-0 m-4">
+  <div class="pictures py-5 m-4">
     <img :src="picture.banner" alt="" />
   </div>
 </template>

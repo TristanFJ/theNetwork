@@ -37,6 +37,7 @@ import Pop from "../utils/Pop";
 import { AppState } from "../AppState";
 import { profilesService } from "../services/ProfilesService";
 import { postService } from "../services/PostService";
+import { picturesService } from "../services/PicturesService";
 export default {
   name: "Profile",
   setup() {
@@ -45,6 +46,7 @@ export default {
       try {
         if (route.name == "Profile") {
           await profilesService.getProfile(route.params.id);
+          await picturesService.getAll();
           await postService.getAll(
             "api/posts",
             "?creatorId=" + route.params.id
