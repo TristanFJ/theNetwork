@@ -22,15 +22,29 @@ import { ref } from "@vue/reactivity";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { postService } from "../services/PostService";
+import { profilesService } from "../services/ProfilesService";
+import { picturesService } from "../services/PicturesService";
+import { useRoute } from "vue-router";
 export default {
   setup() {
+    const route = useRoute();
     const searchText = ref("");
     return {
       searchText,
       async searchPosts() {
         try {
+          if (route.name == "Profile") {
+            await profilesService.getProfile(route.params.id);
+            await picturesService.getAll();
+            await postService.getAll(
+              "api/posts",
+              "?query=" + searchText.value + "&creatorId=" + route.params.id
+            );
+            return;
+          }
+
           logger.log(searchText.value);
-          await postService.getAll("?query=" + searchText.value);
+          await postService.getAll("api/posts", "?query=" + searchText.value);
         } catch (error) {
           logger.log(error);
           Pop.toast(error.message, "error");

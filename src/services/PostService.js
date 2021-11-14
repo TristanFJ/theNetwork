@@ -7,12 +7,12 @@ class PostService {
   async getAll(fullUrl = 'api/posts/', query = '') {
 
     const res = await api.get(fullUrl + query)
-    logger.log('get posts', res.data)
+    // logger.log('get posts', res.data)
     AppState.posts = res.data.posts.map(p => new Post(p))
     AppState.page = res.data.page
     AppState.prevPage = res.data.newer
     AppState.nextPage = res.data.older
-    logger.log('Check AppState ', AppState.prevPage, AppState.nextPage)
+    // logger.log('Check AppState ', AppState.prevPage, AppState.nextPage)
   }
 
 
@@ -38,7 +38,7 @@ class PostService {
     if (!yes) { return }
     const res = await api.delete('api/posts/' + id)
     AppState.posts = AppState.posts.filter(p => p.id !== id)
-    logger.log(res.data)
+    // logger.log(res.data)
   }
 }
 export const postService = new PostService()
