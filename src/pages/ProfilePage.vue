@@ -14,15 +14,28 @@
         >
           <Post :post="p" />
         </div>
-        <div class="m-3" v-if="page">{{ page }}</div>
+        <div class="col-md-12 d-flex justify-content-center">
+          <div class="m-3 text-center" v-if="page">
+            <h4>{{ page }}</h4>
+          </div>
+        </div>
+        <div class="col-md-12 d-flex justify-content-center">
+          <button
+            @click="prev"
+            v-if="prevPage"
+            class="btn btn-sm mx-1 btn-primary text-center"
+          >
+            Previous Page
+          </button>
 
-        <button @click="prev" v-if="prevPage" class="btn mx-1 btn-primary">
-          Previous Page
-        </button>
-
-        <button @click="next" v-if="nextPage" class="btn mx-1 btn-primary">
-          Next Page
-        </button>
+          <button
+            @click="next"
+            v-if="nextPage"
+            class="btn btn-sm mx-1 btn-primary text-center"
+          >
+            Next Page
+          </button>
+        </div>
       </div>
     </div>
   </div>

@@ -13,7 +13,11 @@
   </div>
   <div class="row d-flex align-items-center justify-content-between m-1 px-1">
     <div class="col-md-3">
-      <button @click="like(post.id)" class="btn btn-sm btn-primary mx-1">
+      <button
+        v-if="account.id"
+        @click="like(post.id)"
+        class="btn btn-sm btn-primary mx-1"
+      >
         {{ post.likes.length }} <i class="mdi mdi-thumb-up"></i>
       </button>
       <button

@@ -6,7 +6,7 @@ import { api } from "./AxiosService";
 class PicturesService {
   async getAll() {
     const res = await api.get('api/ads')
-    logger.log('get pictures', res.data)
+    // logger.log('get pictures', res.data)
     AppState.pictures = res.data.map(p => new Picture(p))
     // logger.log('appstate.pictures: ', AppState.pictures)
   }
