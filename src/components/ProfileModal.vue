@@ -47,6 +47,12 @@
                 class="form-control"
                 placeholder="cover image"
               />
+              <input
+                v-model="editable.name"
+                type="text"
+                class="form-control"
+                placeholder="username"
+              />
 
               <input
                 v-model="editable.bio"
