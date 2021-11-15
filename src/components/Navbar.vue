@@ -29,6 +29,9 @@
           <button class="btn btn-primary">Profile</button>
         </li>
       </ul>
+      <div class="col m-0 p-0">
+        <Search />
+      </div>
       <span class="navbar-text">
         <button
           class="

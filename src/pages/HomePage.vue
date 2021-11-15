@@ -1,9 +1,5 @@
 <template>
   <div class="align-items-center justify-content-center">
-    <div class="col m-0 p-0">
-      <Search />
-    </div>
-
     <div class="row p-0 m-3 justify-content-center">
       <div class="col-md-8 p-0">
         <CreatePost v-if="account.id" />

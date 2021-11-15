@@ -1,9 +1,14 @@
 <template>
   <div class="post row align-items-center m-1 d-flex justify-content-start">
-    <div @click="routeTo" class="col-md-2 my-1 selectable">
-      <img :src="post.creator.picture" style="width: 70px" alt="" />
+    <div @click="routeTo" class="col-md-2 my-1">
+      <img
+        :src="post.creator.picture"
+        class="selectable"
+        style="width: 70px"
+        alt=""
+      />
     </div>
-    <div class="col-md-8 text-start">
+    <div @click="routeTo" class="col-md-8 text-start selectable">
       <h6>{{ post.creator.name }}</h6>
     </div>
   </div>
