@@ -2,15 +2,20 @@
   <div class="profile container-fluid text-center">
     <div class="row">
       <ProfileDetails />
-      <div class="col mt-2">
+    </div>
+    <div class="align-items-center justify-content-center">
+      <div class="col m-0 p-0">
         <Search />
       </div>
-      <div class="p-0 m-3">
-        <CreatePost v-if="account.id" />
+
+      <div class="row p-0 m-3 justify-content-center">
+        <div class="col-md-8 p-0">
+          <CreatePost v-if="account.id" />
+        </div>
         <div
           v-for="p in posts"
           :key="p.id"
-          class="col-md-12 card elevation-3 mt-5"
+          class="col-md-8 card elevation-3 m-4 justify-content-center"
         >
           <Post :post="p" />
         </div>
