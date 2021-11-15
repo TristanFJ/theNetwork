@@ -4,10 +4,12 @@
       <div class="col m-0 p-0">
         <Navbar />
       </div>
-      <div class="col-md-10">
+    </div>
+    <div class="row">
+      <div class="col-md-9">
         <router-view />
       </div>
-      <div class="col-md-2 p-0">
+      <div class="col-md-3 p-0">
         <div v-for="p in pictures" :key="p.title">
           <Picture :picture="p" />
         </div>

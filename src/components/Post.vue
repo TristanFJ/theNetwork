@@ -1,16 +1,21 @@
 <template>
-  <div class="post row d-flex align-items-center m-1">
-    <div @click="routeTo" class="col-md-2 mx-3 selectable p-3">
-      <h5>{{ post.creator.name }}</h5>
-      <img :src="post.creator.picture" style="width: 150px" alt="" />
+  <div class="post row align-items-center m-1 d-flex justify-content-start">
+    <div @click="routeTo" class="col-md-2 my-1 selectable">
+      <img :src="post.creator.picture" style="width: 70px" alt="" />
     </div>
-    <div class="col-md-6 text-start px-5 mx-5">
-      <samp class="h4 p-5">
-        {{ post.body }}
-      </samp>
-      <img :src="post.imgUrl" style="width: 150px" alt="" />
+    <div class="col-md-8 text-start">
+      <h6>{{ post.creator.name }}</h6>
     </div>
   </div>
+  <div class="col text-start px-2 mx-2 my-3">
+    <samp class="h4 px-3">
+      {{ post.body }}
+    </samp>
+  </div>
+  <div class="col text-center">
+    <img :src="post.imgUrl" style="width: 150px" alt="" />
+  </div>
+
   <div class="row d-flex align-items-center justify-content-between m-1 px-1">
     <div class="col-md-3">
       <button
@@ -33,6 +38,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";

@@ -41,7 +41,7 @@
   </div>
 </template>
 
-
+// NOTE pre-populate the edit profile modal form
 <script>
 import { computed, watchEffect } from "@vue/runtime-core";
 import { useRoute } from "vue-router";

@@ -1,6 +1,6 @@
 <template>
-  <div class="search row p-3">
-    <div class="col">
+  <div class="search row p-1 justify-content-center">
+    <div class="col-md-8">
       <form @submit.prevent="searchPosts" class="input-group">
         <input
           v-model="searchText"
